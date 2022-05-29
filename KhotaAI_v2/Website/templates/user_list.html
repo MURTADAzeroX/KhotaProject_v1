@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Users data {% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <ul class="list group list-group-flush" id="users">
+        {% for user in users %}
+        <il type="submit" class="list-group-item">{{ user.email }}
+            <button type="submit" class="close" name="DeleteUser" value="{{ user.email }}" >
+                      <span aria-hidden="true">&times;</span>
+            </button>
+
+
+            <button type="submit" class="close" name="ChangeUserRoleToAdmin" value="{{ user.id }}" >
+                      {% if user.role == "Admin" %}
+                      <span style="color:MediumSeaGreen">&nbsp;Admin&nbsp;</span>
+                      {% else %}
+                       <span>&nbsp;Admin&nbsp;</span>
+                      {% endif %}
+            </button>
+            <button type="submit" class="close" name="ChangeUserRoleToUser" value="{{ user.id }}" >
+                      {% if user.role == "Admin" %}
+                      <span>&nbsp;User&nbsp;</span>
+                      {% else %}
+                       <span style="color:MediumSeaGreen">&nbsp;User&nbsp;</span>
+                      {% endif %}
+            </button>
+
+
+        </il>
+
+        {% endfor %}
+    </ul>
+</form>
+
+{% endblock %}

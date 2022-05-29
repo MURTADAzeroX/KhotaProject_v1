@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Users requests{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <ul class="list group list-group-flush" id="users">
+        {% for user in requests %}
+        <il type="submit" class="list-group-item">{{ user.email }}
+            <button type="submit" class="close" name="AddUser" value="{{ user.email }}" >
+                      <span style="color:#48ae23">&nbsp;accept&nbsp;</span>
+            </button>
+            <button type="submit" class="close" name="DeclinesUser" value="{{ user.email }}" >
+                      <span style="color:#f61515">&nbsp;declines&nbsp;</span>
+            </button>
+
+        </il>
+
+        {% endfor %}
+    </ul>
+</form>
+
+{% endblock %}

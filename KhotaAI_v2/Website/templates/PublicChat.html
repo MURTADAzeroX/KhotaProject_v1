@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 align="center">Public Chat</h1>
+
+<form method="POST">
+    <ul class="list group list-group-flush" id="notes">
+        {% for note in user.notes %}
+
+        {% if cr_user_name.first_name == note.data[0:cr_user] %}
+        <div class="alert alert-warning" role="alert" type="submit" class="list-group-item">
+            <a class="text-dark">{{ note.date }}</a>
+            <br>
+            <a class="text-dark">{{ note.data[0:cr_user+2] }}&nbsp;{{ note.data[cr_user+2:] }}</a>
+
+
+            <button type="submit" class="close" name="DeleteNote" value="{{note.data}}_{{note.date}}" >
+                      <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        {% else %}
+        <div class="alert alert-info" role="alert" type="submit" class="list-group-item">
+            <a class="text-dark">{{ note.date }}</a>
+            <br>
+            <a class="text-dark">{{ note.data[0:cr_user+2] }}&nbsp;{{ note.data[cr_user+2:] }}</a>
+
+            {% if cr_user_name.role == 'Admin' %}
+            <button type="submit" class="close" name="DeleteNote" value="{{note.data}}_{{note.date}}" >
+                      <span aria-hidden="true">&times;</span>
+            </button>
+            {% endif %}
+
+        </div>
+
+
+        {% endif %}
+        {% endfor %}
+    </ul>
+</form>
+
+<form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form>
+<br>
+<br>
+<br>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block title %}TicTacToeAI{% endblock %} {% block
+content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='StyleTicTacToePage.css') }}">
+</head>
+<body>
+    <div class="header">
+        <p>Tic-Tac-Toe</p>
+    </div>
+
+    <div id="winner">
+        <form method="post">
+        <p>
+            {% if not StartGame and not IsWin %}
+            <button class="choosing" id="O" type="submit" name="O" value="O">O</button>
+            Who to start
+            <button class="choosing" id="X" type="submit" name="X" value="X">X</button>
+            {% endif %}
+
+            {% if IsWin %} <h3>{{IsWin}}</h3> {% endif %}
+        </p>
+        </form>
+    </div>
+
+
+    <form method="post">
+    <div class="templete">
+            <button class="space 0" id="first" type="submit" name="index 0" value="0">{{data[0]}}</button>
+            <button class="space 1" id="second" type="submit" name="index 1" value="1">{{data[1]}}</button>
+            <button class="space 2" id="third" type="submit" name="index 2" value="2">{{data[2]}}</button>
+            <button class="space 3" id="fourth" type="submit" name="index 3" value="3">{{data[3]}}</button>
+            <button class="space 4" id="fifth" type="submit" name="index 4" value="4">{{data[4]}}</button>
+            <button class="space 5" id="sixth" type="submit" name="index 5" value="5">{{data[5]}}</button>
+            <button class="space 6" id="seventh" type="submit" name="index 6" value="6">{{data[6]}}</button>
+            <button class="space 7" id="eighth" type="submit" name="index 7" value="7">{{data[7]}}</button>
+            <button class="space 8" id="nineth" type="submit" name="index 8" value="8">{{data[8]}}</button>
+        </div>
+    </form>
+
+    <form method="post">
+        <div class="details">
+            <button id="restart" type="submit" name="restart" value="restart">Restart</button>
+        </div>
+    </form>
+
+
+
+</body>
+
+</html>
+
+{% endblock %}
